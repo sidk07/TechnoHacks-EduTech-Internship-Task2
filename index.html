@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="icon" href="./calculator-icon.png">
+    <link rel="stylesheet" href="./style.css">
+
+    
+</head>
+<body>
+    <div class="calc-box">
+        <div class="calc-display-box">
+            <div class="calc-display">
+                <input type="text" name="calc-num-display" id="result" class="calc-display">
+            </div>
+        </div>
+        <div id="calcu" class="calc-btns">
+            <button class="oper-btns button" style="width: 175px; height: 57.4px">AC</button>
+            <button class="oper-btns button" style="width: 75px; height:57.4px;">C</button>
+            <button class="oper-btns button" style="width: 75px; height:57.4px">/ </button>
+            <br>
+            <button class="num-btns button" style="width: 75px; height:57.4px">7</button>
+            <button class="num-btns button" style="width: 75px; height:57.4px">8</button>
+            <button class="num-btns button" style="width: 75px; height:57.4px">9</button>
+            <button class="oper-btns button" style="width: 75px; height:57.4px">*</button>
+            <br>
+            <button class="num-btns button" style="width: 75px; height:57.4px">4</button>
+            <button class="num-btns button" style="width: 75px; height:57.4px">5</button>
+            <button class="num-btns button" style="width: 75px; height:57.4px">6</button>
+            <button class="oper-btns button" style="width: 75px; height:57.4px">-</button>
+            <br>
+            <button class="num-btns button" style="width: 75px; height:57.4px">1</button>
+            <button class="num-btns button" style="width: 75px; height:57.4px">2</button>
+            <button class="num-btns button" style="width: 75px; height:57.4px">3</button>
+            <button class="oper-btns button" style="width: 75px; height:57.4px">+</button>
+            <br>
+            <button class="num-btns button" style="width: 175px; height:67.4px">0</button>
+            <button class="num-btns button" style="width: 75px; height:67.4px">.</button>
+            <button class="ans-btns button" style="width: 75px; height:67.4px; background: #FF5252;">=</button>
+        </div>
+    </div>
+    <script>
+        let string = "";
+        let buttons = document.querySelectorAll('.button');
+        Array.from(buttons).forEach((button)=>{
+            button.addEventListener('click', (e)=>{
+                if(e.target.innerHTML == '=') {
+                    string = eval(string);
+                    document.querySelector('input').value = string;
+                }
+                else if(e.target.innerHTML == 'AC') {
+                    string = "";
+                    document.querySelector('input').value = string;
+                }
+                else if(e.target.innerHTML == 'C') {
+                    string = string.slice(0, -1);
+                    document.querySelector('input').value = string;
+                }
+                else {
+                    console.log(e.target);
+                    string += e.target.innerHTML;
+                    document.querySelector('input').value = string;
+                }
+            })
+        })
+    </script>
+</body>
+</html>
